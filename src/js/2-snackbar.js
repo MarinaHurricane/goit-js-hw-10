@@ -9,6 +9,7 @@ const refs = {
     state: document.querySelector('input[name="state"]'),
 }
 
+
 refs.form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -24,8 +25,24 @@ refs.form.addEventListener('submit', (e) => {
     const state = promiseInfo.state;
     const delay = +promiseInfo.delay;
 
-    createPromise(state, delay);
-
+    createPromise(state, delay)
+    .then(message => {
+        iziToast.show({
+            message: `✅ Fulfilled promise in ${delay}ms`,
+            color: 'green',
+            position: 'topRight',
+            messageSize: '20',
+          });
+    })
+    .catch(message => {
+        iziToast.show({
+            message: `❌ Rejected promise in ${delay}ms`,
+            color: 'red',
+            position: 'topRight',
+            messageSize: '20',
+          });
+    });
+   
     refs.form.reset(); 
 })
 
@@ -34,19 +51,9 @@ function createPromise(isPositive, delay) {
     const promise = new Promise((res, rej) => {
         setTimeout(() => {
             if(isPositive) {
-                iziToast.show({
-                    message: `✅ Fulfilled promise in ${delay}ms`,
-                    color: 'green',
-                    position: 'topRight',
-                    messageSize: '20',
-                  });
+                res(`✅ Fulfilled promise in ${delay}ms`);
             } else {
-                iziToast.show({
-                    message: `❌ Rejected promise in ${delay}ms`,
-                    color: 'red',
-                    position: 'topRight',
-                    messageSize: '20',
-                  });
+                rej(`❌ Rejected promise in ${delay}ms`);
             }
         }, delay);
     });
