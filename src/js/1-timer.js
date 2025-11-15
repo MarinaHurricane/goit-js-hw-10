@@ -49,7 +49,12 @@ let countdownInterval = null;
     refs.startBtn.addEventListener('click', () => {
         if(!userSelectedDate) return;
         refs.startBtn.disabled = true;
+      
         startCountdown(userSelectedDate);
+
+        refs.startBtn.classList.add('no-action');
+        refs.input.disabled = true;
+
     });
 
     function startCountdown(date) {
@@ -61,6 +66,8 @@ let countdownInterval = null;
             if(timeDifference <= 0) {
                 clearInterval(countdownInterval);
                 addLeadingZero(0, 0, 0, 0);
+                refs.input.disabled = false;
+                refs.startBtn.classList.remove('no-action');
                 return;
             }
             const {days, hours, minutes, seconds} = convertMs(timeDifference);

@@ -22,15 +22,19 @@
     padding: 8px 16px;
     width: 75px;
     height: 40px;
-    background: #cfcfcf;
+    background-color: lightblue;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.04em;
-    color: #989898;
+    color: black;
     padding: 8px 16px;
     font-family: 'Montserrat', sans-serif;
     border: none;
+    }
+
+    .no-action {
+        background-color: lightgrey;
     }
 
     .timer {
