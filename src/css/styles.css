@@ -10,9 +10,12 @@
 @import url('./container.css');
 @import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+
+.main-list {
+  padding: 30px;
+  font-size: 30px;
+}
+
+.back-link {
+  padding: 20px;
+}
